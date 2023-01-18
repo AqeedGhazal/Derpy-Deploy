@@ -1,0 +1,13 @@
+.header {
+    text-align: right;
+    padding: 10px 50px;
+}
+
+.container {
+    margin: 50px;
+    padding: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 800px;
+    text-align: center;
+}

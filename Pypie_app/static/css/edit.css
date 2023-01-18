@@ -1,0 +1,39 @@
+.container {
+    margin: 50px;
+    padding: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 800px;
+}
+
+.header {
+    text-align: right;
+    padding: 10px 50px;
+}
+
+.redtext {
+    color: red;
+}
+
+div label{
+    display: inline-block;
+    width: 100px;
+}
+
+div {
+    margin: 10px 0px;
+}
+
+.container table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+}
+.container td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

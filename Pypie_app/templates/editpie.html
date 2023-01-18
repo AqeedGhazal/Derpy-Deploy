@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pypie</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/edit.css' %}">
+</head>
+<body>
+    <div class="header">
+        <a href="/dashboard">
+            <button>Dashboard</button>
+        </a>
+        <a href="/logout">
+            <button>logout</button>
+        </a>
+    </div>
+    <div class="container">
+        <div>
+            <h1>Edit {{pypie.name}}</h1>
+            <form action="/dashboard/{{pypie.id}}/edit/update", method="post">
+                {% csrf_token %}
+                <div class="name-row">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" value="{{pypie.name}}">
+                </div>
+                <div class="filling-row">
+                    <label for="filling">Filling:</label>
+                    <input type="text" name="filling" id="filling" value="{{pypie.filling}}">
+                </div>
+                <div class="email_row">
+                    <label for="crust">Crust:</label>
+                    <input type="text" name="crust" id="cruse" value="{{pypie.crust}}">
+                </div>
+                <div class="Add_pie_row">
+                    <input type="submit" value="Edit Pie">
+                </div>
+            </form>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <ol>
+                        <li class="redtext">{{ message }}</li>
+                        <li class="redtext">{{ message.tags }}</li>
+                    </ol>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        </div>
+    </div>
+</body>
+</html>

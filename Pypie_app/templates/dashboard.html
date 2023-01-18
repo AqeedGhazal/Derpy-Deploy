@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pypie Derby</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/pies">
+                <button>PieDerby</button>
+            </a>
+            <a href="/logout">
+                <button>logout</button>
+            </a>
+        </div>
+        <div class="pypies-part">
+            <h1>Pypies by {{user.first_name}}</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pypie in user_pies %}
+                    <td>{{pypie.name}}</td>
+                    <td>
+                        <a href="/dashboard/{{pypie.id}}/edit">Edit |</a>
+                        <a href="/dashboard/{{pypie.id}}/delete">Delete</a>
+                    </td>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+        <div>
+            <h1>Add New Pypie</h1>
+            <form action="/dashboard/addpie", method="post">
+                {% csrf_token %}
+                <div class="name-row">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div class="filling-row">
+                    <label for="filling">Filling:</label>
+                    <input type="text" name="filling" id="filling">
+                </div>
+                <div class="email_row">
+                    <label for="crust">Crust:</label>
+                    <input type="text" name="crust" id="cruse">
+                </div>
+                <div class="Add_pie_row">
+                    <input type="submit" value="Add Pie">
+                </div>
+            </form>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                        <li class="redtext">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        </div>
+</body>
+</html>

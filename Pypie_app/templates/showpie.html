@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pypie Derpy</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/showpie.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/dashboard">
+                <button>Dashboard</button>
+            </a>
+            <a href="/logout">
+                <button>logout</button>
+            </a>
+        </div>
+        <div class="">
+            <h1>{{pypie.name}} By {{pypie.added_by.first_name}}</h1>
+            <p>{{pypie.filling}}</p>
+            <p> with a {{pypie.crust}}</p>
+            <p></p>
+        <div class="vote">
+                <p>Vote:</p>
+                {% if user in pypie.users_who_votes.all %}
+                <a href="/show/{{pypie.id}}/dislike"> Yuck</a>
+                {% else %}
+                <a href="/show/{{pypie.id}}/like">Dellicious</a>
+                {% endif %}
+        </div>
+        </div>
+</body>
+</html>

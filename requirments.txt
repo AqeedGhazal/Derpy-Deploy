@@ -1,0 +1,7 @@
+asgiref==3.4.1
+bcrypt==4.0.1
+Django==2.2.4
+django-markup==1.6
+Pillow==8.4.0
+pytz==2022.6
+typing_extensions==4.1.1

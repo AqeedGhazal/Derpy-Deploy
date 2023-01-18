@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyPie Derpy</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/allpie.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/dashboard">
+                <button>Dashboard</button>
+            </a>
+            <a href="/logout">
+                <button>logout</button>
+            </a>
+        </div>
+        <div class="pypies-part">
+            <h1>Pypie Derpy</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Pypie By</th>
+                        <th>Votes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pypie in all_pypie %}
+                    <td> <a href="/show/{{pypie.id}}">{{pypie.name}}</a></td>
+                    <td>{{pypie.added_by.first_name}}</td>
+                    <td>{{pypie.votes}}</td>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+</body>
+</html>
